@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3D carousel styles */
+.carousel-container {
+  transform-style: preserve-3d;
+}
+
+.carousel-container > div {
+  transform-origin: center center;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced 3D effect */
+@media (min-width: 768px) {
+  .carousel-container > div::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    right: 5%;
+    height: 10px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+    filter: blur(5px);
+    transform: rotateX(90deg);
+    transform-origin: top;
+    z-index: -1;
+  }
+}
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Bel-Air Mode Styles */
+.belair-mode .belair-element {
+  display: block;
+  opacity: 1;
+}
+
+.belair-element {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.belair-mode {
+  --belair-gradient: linear-gradient(135deg, #ff6b6b, #6b66ff);
+}
+
+.belair-mode button {
+  transition: all 0.3s ease;
+}
+
+.belair-mode button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Add these styles at the end of the file to make the Bel-Air mode more noticeable */
+
+/* Enhanced Bel-Air Mode Styles */
+.belair-mode {
+  --belair-gradient: linear-gradient(135deg, #ff6b6b, #6b66ff);
+}
+
+.belair-mode .belair-element {
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.belair-mode button {
+  transition: all 0.3s ease;
+}
+
+.belair-mode button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Add more visible Bel-Air elements */
+.belair-mode #about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(107, 102, 255, 0.1));
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.belair-mode #portfolio {
+  background-color: rgba(107, 102, 255, 0.03);
+}
+
+.belair-mode #contact {
+  background-image: linear-gradient(to bottom right, rgba(255, 107, 107, 0.05), rgba(107, 102, 255, 0.05));
+}
+
+.belair-mode .card {
+  border-color: rgba(255, 107, 107, 0.2);
+}
